@@ -80,7 +80,7 @@ const InputShow = ({dataProvider}) => {
                         data={data}
                             renderItem={({ item }) => (
                                 <TouchableOpacity onPress={() => setQuery(item.strName)}>
-                                    <Text>{item.strName}</Text>
+                                    <Text style={{fontSize:16, fontVariant: "bold"}}>{item.strName}</Text>
                                 </TouchableOpacity>
                             )}
                             keyExtractor={item => item.strName}
