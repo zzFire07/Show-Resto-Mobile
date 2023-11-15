@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { LogBox } from 'react-native';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -10,6 +12,8 @@ import RestaurantResults from './components/RestaurantResults/RestaurantResults.
 import RestaurantInfo from './components/RestaurantInfo/RestaurantInfo.jsx';
 
 const StackWindow = createStackNavigator();
+
+LogBox.ignoreAllLogs();
 
 function App() {
 
