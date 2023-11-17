@@ -9,6 +9,8 @@ import { useContext } from 'react';
 
 export default function HomeApp() {
 
+  console.log(useContext(restaurantContext));
+
   const [context, dispatch] = useContext(restaurantContext);
 
   const RESTAURANTS = context.restaurantes;
@@ -18,10 +20,10 @@ export default function HomeApp() {
   return (
     <View style={styles.normalizer}>
       <View style={styles.container}>
-        <View>
+        <View style={{marginTop: '5%', marginBottom: '8%'}}>
           <CarrousselImageRestaurant/>
         </View>
-        <View style={{zIndex: 9999}}>
+        <View style={{zIndex: 9999, marginBottom: '12%'}}>
           <InputShow dataProvider={RESTAURANTS}/>
         </View>
         <SafeAreaView style={styles.safeCarroussel}>
@@ -38,7 +40,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-evenly',
   },
   buttonView: {
     backgroundColor: 'cyan',

@@ -7,14 +7,14 @@ import { useNavigation } from '@react-navigation/native';
 import { restaurantContext } from './../../context/ContextProvider';
 import { useContext } from 'react';
   
-  const CarrousselImageRestaurant = ({}) => {
+const CarrousselImageRestaurant = ({}) => {
 
   const [context, dispatch] = useContext(restaurantContext);
 
   const dataToShow = context.restaurantes;
 
-    const height = 200;
-    const width = 200;
+    const height = 225;
+    const width = 225;
       
     const navigation = useNavigation();
 
@@ -33,7 +33,7 @@ import { useContext } from 'react';
           margin: 0
       },
       container: {
-          margin: 20,
+          margin: 0,
           padding: 0
       },
     });

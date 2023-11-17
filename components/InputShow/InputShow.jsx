@@ -70,17 +70,24 @@ const InputShow = ({dataProvider}) => {
                     autoCorrect={false}
                     data={data}
                     value={query}
-                    containerStyle={{minWidth: '50%'}}
                     onChangeText={setQuery}
                     hideResults={query.length == 0}
-                    placeholder='Search a show or resto'
+                    placeholder={dataSelectedShow ? "Search any show" : "Search any resto"}
                     listContainerStyle={styles.resultContainerView}
                     renderResultList={() => (
                         <FlatList style={styles.resultView}
                         data={data}
                             renderItem={({ item }) => (
-                                <TouchableOpacity onPress={() => setQuery(item.strName)}>
-                                    <Text style={{fontSize:16, fontVariant: "bold"}}>{item.strName}</Text>
+                                <TouchableOpacity style={styles.resultItem} onPress={() => {
+                                    if(dataSelectedShow){
+                                        let aux = dataProvider.filter((resto) => resto.shows.includes(item))[0];
+                                        navigation.navigate('RestaurantInfo', { selectedRestaurant: aux });
+                                    }
+                                    else{
+                                        navigation.navigate('RestaurantInfo', { selectedRestaurant: item });
+                                    }
+                                }}>
+                                    <Text style={styles.resultText}>{item.strName}</Text>
                                 </TouchableOpacity>
                             )}
                             keyExtractor={item => item.strName}
@@ -114,23 +121,28 @@ const InputShow = ({dataProvider}) => {
 
 const styles = StyleSheet.create({
     resultView: {
-        overflow: 'scroll'
+        overflow: 'scroll',
+        maxHeight: 120,
+
     },
     resultContainerView: {
-        maxHeight: 200,
-        backgroundColor: 'grey',
+        maxWidth: '100%',
+        backgroundColor: 'orange',
         zIndex: 9999
     },
     container: {
         marginRight: "1%",
-        marginLeft: "1%"
+        marginLeft: "1%",
+        width: '50%',
+        height: 50,
+
     },
     autocompleteContainer:{
         flexDirection: 'row',
-        height: 50,
         margin: 0,
         padding: 0,
-        zIndex: 9999
+        zIndex: 9999,
+        width: '100%'
 
       },
     aligner: {
@@ -140,23 +152,25 @@ const styles = StyleSheet.create({
         padding: 0
     },
     buttonView: {
-        backgroundColor: 'cyan',
-        borderRadius: 15,
+        backgroundColor: 'red',
+        borderRadius: 8,
         justifyContent: 'center',
         alignItems: 'center',
         margin: 0,
         padding: 0,
+        marginBottom: 7
     },
     dataSelector: {
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         padding: 0,
-        width: 100
+        width: 120,
+        marginBottom: 7,
 
     },
     dataSelectorSelected: {
-        backgroundColor: 'cyan',
+        backgroundColor: 'red',
         justifyContent: 'center',
         alignItems: 'center',
         margin: 0,
@@ -165,7 +179,7 @@ const styles = StyleSheet.create({
         height: 30
     },
     dataSelectorNotSelected: {
-        backgroundColor: 'black',
+        backgroundColor: 'white',
         justifyContent: 'center',
         alignItems: 'center',
         margin: 0,
@@ -174,11 +188,32 @@ const styles = StyleSheet.create({
         height: 30
     },
     textSelector: {
-        color: 'white',
+        color: 'black',
         fontSize: 10,
         fontWeight: 'bold'
     },
-
+    resultItem: {
+        backgroundColor: '#ffcc99',
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 0,
+        padding: 0,
+        width: '95%',
+        height: 40,
+        borderRadius: 6,
+        borderColor: "#ffcc99",
+        borderWidth: 1.5,
+        marginTop: "2%",
+        marginBottom: "2%",
+        marginLeft: "2.5%",
+        marginRight: "2.5%",
+    },
+    resultText: {
+        color: 'white',
+        fontSize: 18,
+        fontWeight: 'bold',
+        width: '90%'
+    }
   });
 
 export default InputShow;

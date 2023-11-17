@@ -1,4 +1,4 @@
-import {Text, Image, StyleSheet, TouchableOpacity, View, ScrollView} from 'react-native';
+import {Text, Image, StyleSheet, TouchableOpacity, View, ScrollView, FlatList} from 'react-native';
 import React, {useState, useEffect} from 'react';
 
 const RestaurantInfo = ({ route }) => {
@@ -39,10 +39,10 @@ const RestaurantInfo = ({ route }) => {
             flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
-            margin: 0,
+            margin: "2%",
             padding: 0
         },
-        menuImage: {
+        itemImage: {
             width: 100,
             height: 100,
             borderRadius: 10,
@@ -55,7 +55,8 @@ const RestaurantInfo = ({ route }) => {
             padding: 0,
             width: "90%",
             margin: "5%",
-            backgroundColor: 'orange'
+            backgroundColor: 'orange',
+            borderRadius: 10,
 
         },
         dataSelector: {
@@ -63,13 +64,13 @@ const RestaurantInfo = ({ route }) => {
             justifyContent: 'center',
             alignItems: 'center',
             padding: 0,
+            borderRadius: 10,
             width: "90%",
-            margin: "10%"
+            margin: "5%"
     
         },
         dataSelectorSelected: {
             backgroundColor: 'cyan',
-            borderRadius: 15,
             justifyContent: 'center',
             alignItems: 'center',
             margin: 0,
@@ -79,7 +80,6 @@ const RestaurantInfo = ({ route }) => {
         },
         dataSelectorNotSelected: {
             backgroundColor: 'red',
-            borderRadius: 15,
             justifyContent: 'center',
             alignItems: 'center',
             margin: 0,
@@ -143,9 +143,9 @@ const RestaurantInfo = ({ route }) => {
                         return(
                             <TouchableOpacity style={styles.restaurantContainer} key={item.strName}>
                                 <View style={styles.dropDownItem}>
-                                    <Text style={{marginBottom: "5%", alignSelf: "center", fontSize: 24}}>{item.strName}</Text>
-                                    <Text>{item.strDescription}</Text>
-                                    <Text style={{backgroundColor: "green"}}>{item.strPrice}</Text>
+                                    <Text style={{marginBottom: "5%", alignSelf: "center", fontSize: 28}}>{item.strName}</Text>
+                                    <Text style={{marginLeft: "5%"}} >{item.strDescription}</Text>
+                                    <Text style={{backgroundColor: "green", alignSelf: "center", fontSize: 20, marginTop: "2%", borderRadius: 2}}>{item.strPrice}</Text>
                                 </View>
                             </TouchableOpacity>
                         )

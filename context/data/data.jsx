@@ -95,7 +95,10 @@ export const ListadoRestaurantes = [
           strImageURL: 'https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/hero/desktop/t-mcdonalds-Quarter-Pounder-with-Cheese-Extra-Value-Meals.jpg',
           strDescription: 'Churro relleno de dulce de leche',
           strPrice: '60',
-          strCategory: 'Churros'
+          strCategory: 'Churros',
+          images: [
+
+          ]
         },
         {
           id: '2',

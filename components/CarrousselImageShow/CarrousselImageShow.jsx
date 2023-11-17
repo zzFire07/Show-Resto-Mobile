@@ -13,8 +13,8 @@ import { useContext } from 'react';
 
     const dataToShow = context.restaurantes;
 
-    const height = 300;
-    const width = 200;
+    const height = 340;
+    const width = 225;
       
     const navigation = useNavigation();
 
@@ -33,7 +33,7 @@ import { useContext } from 'react';
           margin: 0
       },
       container: {
-          margin: 20,
+          margin: 0,
           padding: 0
       },
     });
