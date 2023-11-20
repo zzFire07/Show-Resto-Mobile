@@ -1,11 +1,11 @@
 import Carousel, { Pagination } from 'react-native-snap-carousel';
-import React, { useState, useEffect } from 'react';
+
+import React, { useState, useEffect, useContext } from 'react';
 import { View, Image, StyleSheet, TouchableOpacity,  } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 
 import { restaurantContext } from './../../context/ContextProvider';
-import { useContext } from 'react';
   
 const CarrousselImageRestaurant = ({}) => {
 
@@ -62,6 +62,8 @@ const CarrousselImageRestaurant = ({}) => {
 
     return (
         <View style={styles.container}>
+
+
           <Carousel
               ref={(c) => { this._carousel = c; }}
               data={data}
@@ -74,6 +76,8 @@ const CarrousselImageRestaurant = ({}) => {
               containerCustomStyle={{ maxHeight: height}}
               onSnapToItem={(index) => setActiveSlide(index)}
           />
+
+
             <Pagination
               dotsLength={data.length}
               activeDotIndex={activeSlide}
@@ -88,6 +92,8 @@ const CarrousselImageRestaurant = ({}) => {
               inactiveDotOpacity={0.4}
               inactiveDotScale={0.6}
             />
+
+
         </View>
     );
 }

@@ -99,33 +99,42 @@ const RestaurantInfo = ({ route }) => {
     const [dataSelectedMenus, setDataSelectedMenus] = useState(true);
 
     useEffect(() => {
+
         setDataDropDown(item.menus ? item.menus : null);
+
     }, []);
     
     return (
         <View style={styles.normalizer} >
             <View style={styles.container} >
+
                 <Image style={styles.image} source={{ uri: item.strImageURL }} />
 
                 <Text>{item.strName}</Text>
                 <Text>{item.strDescription}</Text>
 
                 <View style={styles.direction}>
+
                     <Text>{item.strAddress}</Text>
-                    {/* Aca debería ir el iframe de google maps de la direccion del restaurante */}
+
                 </View>
 
                 {(dataDropDown)
                 &&
                 <View style={styles.aligner}>
                     <View style={styles.dataSelector} >
+
                         <TouchableOpacity style={dataSelectedMenus ? styles.dataSelectorSelected : styles.dataSelectorNotSelected} onPress={() => {
                             setDataDropDown(item.menus);
                             setDataSelectedMenus(true);
                             setDataSelectedShows(false);
                         }}
                         >
+
+
                             <Text style={styles.textSelector} > MENUS </Text>
+
+
                         </TouchableOpacity>
                         <TouchableOpacity style={dataSelectedShows ? styles.dataSelectorSelected : styles.dataSelectorNotSelected} onPress={() => {
                             setDataDropDown(item.shows);
@@ -133,7 +142,10 @@ const RestaurantInfo = ({ route }) => {
                             setDataSelectedMenus(false);
                         }}
                         >
+
                             <Text style={styles.textSelector}> SHOWS </Text>
+
+
                         </TouchableOpacity>
                     </View>
                 </View>}
@@ -141,13 +153,23 @@ const RestaurantInfo = ({ route }) => {
                 <ScrollView>
                     {dataDropDown?.map((item) => {
                         return(
+
                             <TouchableOpacity style={styles.restaurantContainer} key={item.strName}>
+
+
                                 <View style={styles.dropDownItem}>
+
+
                                     <Text style={{marginBottom: "5%", alignSelf: "center", fontSize: 28}}>{item.strName}</Text>
                                     <Text style={{marginLeft: "5%"}} >{item.strDescription}</Text>
                                     <Text style={{backgroundColor: "green", alignSelf: "center", fontSize: 20, marginTop: "2%", borderRadius: 2}}>{item.strPrice}</Text>
+                               
+                               
                                 </View>
+
+
                             </TouchableOpacity>
+
                         )
                     })}
                 </ScrollView>

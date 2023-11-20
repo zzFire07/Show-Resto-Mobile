@@ -1,11 +1,11 @@
 import Carousel, { Pagination } from 'react-native-snap-carousel';
-import React, { useState, useEffect } from 'react';
+
+import React, { useState, useEffect, useContext } from 'react';
 import { View, Image, StyleSheet, TouchableOpacity,  } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 
 import { restaurantContext } from './../../context/ContextProvider';
-import { useContext } from 'react';
   
   const CarrousselImageShow = ({}) => {
 
@@ -45,6 +45,7 @@ import { useContext } from 'react';
 
         const aux = dataToShow.map((resto) => resto.shows.map((show) => {return show})).flat();
         setData(aux);
+
       }, []);
 
 
@@ -53,12 +54,18 @@ import { useContext } from 'react';
       
       return (
         <TouchableOpacity onPress={()=>{
+
             let dataToSend = dataToShow.filter((resto) => resto.shows.includes(item))[0];
             navigation.navigate('RestaurantInfo', { selectedRestaurant: dataToSend });
+
           }} >
+
               <View style={styles.slide}>
+
                   <Image style={styles.image} source={{ uri: item.strImageURL }} />
+
               </View>
+
           </TouchableOpacity>
         );
     }
@@ -66,7 +73,10 @@ import { useContext } from 'react';
 
 
     return (
+
         <View style={styles.container}>
+
+
           <Carousel
               ref={(c) => { this._carousel = c; }}
               data={data}
@@ -79,6 +89,8 @@ import { useContext } from 'react';
               containerCustomStyle={{ maxHeight: height}}
               onSnapToItem={(index) => setActiveSlide(index)}
           />
+
+
             <Pagination
               dotsLength={data.length}
               activeDotIndex={activeSlide}
@@ -93,6 +105,8 @@ import { useContext } from 'react';
               inactiveDotOpacity={0.4}
               inactiveDotScale={0.6}
             />
+
+            
         </View>
     );
 }

@@ -1,11 +1,8 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState, useContext } from 'react';
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { useState } from 'react';
-import { ScrollView } from 'react-native';
 
 import { restaurantContext } from './../../context/ContextProvider';
-import { useContext } from 'react';
 
 const RestaurantResults = ({ route }) => {
 
@@ -23,20 +20,30 @@ const RestaurantResults = ({ route }) => {
         <ScrollView>
            {filteredRestaurants.map((item) => {
                return(
+
                    <TouchableOpacity style={styles.restaurantContainer} key={item.strName} onPress={()=>{
                         if(item.shows === undefined){
+
                             let aux = RESTAURANTS.filter((resto) => resto.shows.includes(item))[0];
                             navigation.navigate('RestaurantInfo', { selectedRestaurant: aux });
+
                         }
                         else{
+
                             navigation.navigate('RestaurantInfo', { selectedRestaurant: item });
+
                         }
                     }}>
+
                             <Image style={styles.restaurantImage} source={{ uri: item.strImageURL }} />
+                            
                             <View style={styles.restaurantDescription}>
+
                                 <Text>{item.strDescription}</Text>
                                 <Text style={{fontSize: 20, fontVariant: "bold"}}>{item.strName}</Text>
+
                             </View>
+
                      </TouchableOpacity>
                 )
             })}

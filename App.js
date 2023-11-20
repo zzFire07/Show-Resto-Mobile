@@ -21,15 +21,19 @@ return (
     <ContextProvider>
       <NavigationContainer>
         <StackWindow.Navigator screenOptions={{
+    
     headerShown: true,
     headerStyle: {
       backgroundColor: '#f4511e',
       height: 80
+
     },
   }}>
+
             <StackWindow.Screen name="HomeApp" component={HomeApp} />
             <StackWindow.Screen name="RestaurantResults" component={RestaurantResults} />
             <StackWindow.Screen name="RestaurantInfo" component={RestaurantInfo} />
+
         </StackWindow.Navigator>
       </NavigationContainer>
     </ContextProvider>

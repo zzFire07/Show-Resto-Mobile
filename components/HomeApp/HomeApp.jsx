@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Button, Keyboard, SafeAreaView } from 'react-native';
-import InputShow from './../InputShow/InputShow';
 import { AppRegistry } from 'react-native';
+
+import InputShow from './../InputShow/InputShow';
 import CarrousselImageRestaurant from './../CarrousselImageRestaurant/CarrousselImageRestaurant';
 import CarrousselImageShow from './../CarrousselImageShow/CarrousselImageShow';
 
@@ -26,9 +27,7 @@ export default function HomeApp() {
         <View style={{zIndex: 9999, marginBottom: '12%'}}>
           <InputShow dataProvider={RESTAURANTS}/>
         </View>
-        <SafeAreaView style={styles.safeCarroussel}>
           <CarrousselImageShow/>
-        </SafeAreaView>
       </View>
     </View>
   );
@@ -48,11 +47,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     margin: 0,
     padding: 0
-  },
-  safeCarroussel: {
-    margin: 0,
-    padding: 0,
-    backgroundColor: 'transparent'
   },
   normalizer: {
     backgroundColor: '#ffcc99',

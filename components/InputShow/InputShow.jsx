@@ -52,15 +52,21 @@ const InputShow = ({dataProvider}) => {
                         setDataSelectedShow(true);
                     }}
                     >
+
                         <Text style={styles.textSelector} > SHOW </Text>
+
                     </TouchableOpacity>
+
+
                     <TouchableOpacity style={dataSelectedResto ? styles.dataSelectorSelected : styles.dataSelectorNotSelected} onPress={() => {
                         setShows(dataResto)
                         setDataSelectedShow(false);
                         setDataSelectedResto(true);
                     }}
                     >
+
                         <Text style={styles.textSelector}> RESTO </Text>
+
                     </TouchableOpacity>
                 </View>
             </View>
@@ -75,9 +81,11 @@ const InputShow = ({dataProvider}) => {
                     placeholder={dataSelectedShow ? "Search any show" : "Search any resto"}
                     listContainerStyle={styles.resultContainerView}
                     renderResultList={() => (
+
                         <FlatList style={styles.resultView}
                         data={data}
                             renderItem={({ item }) => (
+
                                 <TouchableOpacity style={styles.resultItem} onPress={() => {
                                     if(dataSelectedShow){
                                         let aux = dataProvider.filter((resto) => resto.shows.includes(item))[0];
@@ -87,7 +95,9 @@ const InputShow = ({dataProvider}) => {
                                         navigation.navigate('RestaurantInfo', { selectedRestaurant: item });
                                     }
                                 }}>
+
                                     <Text style={styles.resultText}>{item.strName}</Text>
+                                    
                                 </TouchableOpacity>
                             )}
                             keyExtractor={item => item.strName}
