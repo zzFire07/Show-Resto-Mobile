@@ -8,25 +8,40 @@ const InputShow = ({dataProvider}) => {
 
     const navigation = useNavigation();
 
+    // Estado que contiene lo que se esta escribiendo en el input.
     const [query, setQuery] = useState('');
+
+    // Estado que contiene un array de restaurantes.
     const [shows, setShows] = useState([]);
 
     
+    // Estado repetido que contiene un array de restaurantes.
     const [dataShows, setDataShows] = useState([]);
+
+    // Estado que contiene un array de shows.
     const [dataResto, setDataResto] = useState([]);
 
+
+    // Estados para saber que data mostrar en el dropdown.
     const [dataSelectedShow, setDataSelectedShow] = useState(true);
     const [dataSelectedResto, setDataSelectedResto] = useState(false);
     
+    // Se usa useMemo para tener en cache el resultado de la funcion filterData.
     const data = React.useMemo(
         () => filterData(query),
+        // Se actualiza el resultado de la funcion filterData cuando cambia el query o el estado del select del dropdown.
         [query, dataSelectedResto]
         );
         
+        // Funcion que filtra la data de los restaurantes, para ver si el nombre del 
+        // restaurante empieza con lo que se esta escribiendo en el input.
         function filterData(query){
             return shows.filter(show => show?.strName.toLowerCase().startsWith(query?.toLowerCase()))
         }
         
+
+
+        // Se usa useEffect para actualizar el estado de la data en dataShows y dataResto cuando se monta el componente.
         useEffect(() => {
 
             let aux = dataProvider.map((resto) => resto.shows.map((show) => {return show}));
@@ -41,10 +56,13 @@ const InputShow = ({dataProvider}) => {
         }, []);
 
 
+    
     return(
         <View style={styles.autocompleteContainer}>
 
             <View style={styles.aligner}>
+
+                {/* Se crea la caja para seleccionar que buscar en el input. */}
                 <View style={styles.dataSelector} >
                     <TouchableOpacity style={dataSelectedShow ? styles.dataSelectorSelected : styles.dataSelectorNotSelected} onPress={() => {
                         setShows(dataShows)
@@ -107,6 +125,8 @@ const InputShow = ({dataProvider}) => {
             </View>
 
             <View style={styles.aligner}>
+
+                    {/* Se crea el boton para ir a la pagina de resultados. */}
                     <View style={styles.buttonView}>
                         <Button color={'black'} title="Go" onPress={()=>{
                             if(data.length == 1){

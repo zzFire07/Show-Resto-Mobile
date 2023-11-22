@@ -9,10 +9,12 @@ import {
     return restaurants;
   };
   
+  // Se tendra solo un objeto en el context, que sera restaurantes.
   const types = {
     setRestaurantes: "setRestaurantes",
   };
   
+  // Solo un case para el reducer, que sera setRestaurantes.
   const ContextReducer = (state, action) => {
     switch (action.type) {
       case types.setRestaurantes:
@@ -26,6 +28,8 @@ import {
     }
   };
   
+
+  // Se exporta los types para usar en el dispatcher, y los otros dos para usar en el context provider.
   export { types };
   export { initialRestaurants };
   export default ContextReducer;

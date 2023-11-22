@@ -6,12 +6,17 @@ import { restaurantContext } from './../../context/ContextProvider';
 
 const RestaurantResults = ({ route }) => {
 
+    // Se usa el hook useContext para obtener el estado global de la aplicacion.
     const [context, dispatch] = useContext(restaurantContext);
 
+    // Se obtiene la data de los restaurantes traido del context.
+    // Esta data se usa para acceder al restaurante que patrocina a un show.
     const RESTAURANTS = context.restaurantes;
 
+    // Se obtiene el hook useNavigation para navegar entre pantallas.
     const navigation = useNavigation();
 
+    // Se obtiene la data de los restaurantes filtrados. 
     const filteredRestaurants = route.params?.filteredRestaurants;
 
 

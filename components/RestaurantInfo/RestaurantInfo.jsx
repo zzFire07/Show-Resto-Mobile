@@ -3,98 +3,13 @@ import React, {useState, useEffect} from 'react';
 
 const RestaurantInfo = ({ route }) => {
 
-    const item = route.params?.selectedRestaurant
+    // Se recibe la data del restaurante seleccionado.
+    const item = route.params?.selectedRestaurant;
 
+    // Se crea el estado con la data a mostrar en el dropdown.
     const [dataDropDown, setDataDropDown] = useState([]);
 
-    const styles = StyleSheet.create({
-        normalizer: {
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center',
-            margin: 0,
-            padding: 0
-        },
-        container: {
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            margin: 0,
-            padding: 0
-        },
-        image: {
-            width: 100,
-            height: 100,
-            borderRadius: 10,
-            margin: 0
-        },
-        direction: {
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center',
-            margin: 0,
-            padding: 0
-        },
-        restaurantContainer: {
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center',
-            margin: "2%",
-            padding: 0
-        },
-        itemImage: {
-            width: 100,
-            height: 100,
-            borderRadius: 10,
-            margin: 0
-        },
-        dropDownItem: {
-            flexDirection: 'column',
-            justifyContent: 'auto',
-            alignItems: 'left',
-            padding: 0,
-            width: "90%",
-            margin: "5%",
-            backgroundColor: 'orange',
-            borderRadius: 10,
-
-        },
-        dataSelector: {
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center',
-            padding: 0,
-            borderRadius: 10,
-            width: "90%",
-            margin: "5%"
-    
-        },
-        dataSelectorSelected: {
-            backgroundColor: 'cyan',
-            justifyContent: 'center',
-            alignItems: 'center',
-            margin: 0,
-            padding: 0,
-            width: '50%',
-            height: 30
-        },
-        dataSelectorNotSelected: {
-            backgroundColor: 'red',
-            justifyContent: 'center',
-            alignItems: 'center',
-            margin: 0,
-            padding: 0,
-            width: '50%',
-            height: 30
-        },
-        aligner: {
-            justifyContent: 'center',
-            alignItems: 'center',
-            margin: 0,
-            padding: 0
-        }
-    });
-
+    // Estados para saber que data mostrar en el dropdown.
     const [dataSelectedShows, setDataSelectedShows] = useState(false);
     const [dataSelectedMenus, setDataSelectedMenus] = useState(true);
 
@@ -119,6 +34,10 @@ const RestaurantInfo = ({ route }) => {
 
                 </View>
 
+
+                {/* 
+                Se crea solo si tiene un menus, osea, si es un restaurante. Es la caja con el selector de menus y shows.
+                */}
                 {(dataDropDown)
                 &&
                 <View style={styles.aligner}>
@@ -150,6 +69,10 @@ const RestaurantInfo = ({ route }) => {
                     </View>
                 </View>}
 
+
+                {/*
+                Se crea un scrollview con la data del dropdown.
+                */}
                 <ScrollView>
                     {dataDropDown?.map((item) => {
                         return(
@@ -160,9 +83,9 @@ const RestaurantInfo = ({ route }) => {
                                 <View style={styles.dropDownItem}>
 
 
-                                    <Text style={{marginBottom: "5%", alignSelf: "center", fontSize: 28}}>{item.strName}</Text>
-                                    <Text style={{marginLeft: "5%"}} >{item.strDescription}</Text>
-                                    <Text style={{backgroundColor: "green", alignSelf: "center", fontSize: 20, marginTop: "2%", borderRadius: 2}}>{item.strPrice}</Text>
+                                    <Text style={{marginBottom: "5%", alignSelf: "center", fontSize: 28}}>{ item.strName }</Text>
+                                    <Text style={{marginLeft: "5%"}} >{ item.strDescription }</Text>
+                                    <Text style={{backgroundColor: "green", alignSelf: "center", fontSize: 20, marginTop: "2%", borderRadius: 2}}>{ item.strPrice }</Text>
                                
                                
                                 </View>
@@ -179,3 +102,92 @@ const RestaurantInfo = ({ route }) => {
 };
 
 export default RestaurantInfo;
+
+
+const styles = StyleSheet.create({
+    normalizer: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 0,
+        padding: 0
+    },
+    container: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 0,
+        padding: 0
+    },
+    image: {
+        width: 100,
+        height: 100,
+        borderRadius: 10,
+        margin: 0
+    },
+    direction: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 0,
+        padding: 0
+    },
+    restaurantContainer: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: "2%",
+        padding: 0
+    },
+    itemImage: {
+        width: 100,
+        height: 100,
+        borderRadius: 10,
+        margin: 0
+    },
+    dropDownItem: {
+        flexDirection: 'column',
+        justifyContent: 'auto',
+        alignItems: 'left',
+        padding: 0,
+        width: "90%",
+        margin: "5%",
+        backgroundColor: 'orange',
+        borderRadius: 10,
+
+    },
+    dataSelector: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 0,
+        borderRadius: 10,
+        width: "90%",
+        margin: "5%"
+
+    },
+    dataSelectorSelected: {
+        backgroundColor: 'cyan',
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 0,
+        padding: 0,
+        width: '50%',
+        height: 30
+    },
+    dataSelectorNotSelected: {
+        backgroundColor: 'red',
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 0,
+        padding: 0,
+        width: '50%',
+        height: 30
+    },
+    aligner: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 0,
+        padding: 0
+    }
+});

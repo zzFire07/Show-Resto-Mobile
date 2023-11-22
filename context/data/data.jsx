@@ -1,3 +1,5 @@
+// Data hardcodeada para integrar al context.
+
 export const ListadoRestaurantes = [
     {
       id: '1',

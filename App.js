@@ -13,11 +13,14 @@ import RestaurantInfo from './components/RestaurantInfo/RestaurantInfo.jsx';
 
 const StackWindow = createStackNavigator();
 
+// Para que sea mas friendly la app, se ignoran los warnings, sino saltan carteles invasivos.
 LogBox.ignoreAllLogs();
 
 function App() {
 
 return (
+
+    // Se implementa el contexto de la app.
     <ContextProvider>
       <NavigationContainer>
         <StackWindow.Navigator screenOptions={{
@@ -30,6 +33,7 @@ return (
     },
   }}>
 
+            {/* Se definen las pantallas de la app. */}
             <StackWindow.Screen name="HomeApp" component={HomeApp} />
             <StackWindow.Screen name="RestaurantResults" component={RestaurantResults} />
             <StackWindow.Screen name="RestaurantInfo" component={RestaurantInfo} />

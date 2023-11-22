@@ -10,24 +10,31 @@ import { useContext } from 'react';
 
 export default function HomeApp() {
 
-  console.log(useContext(restaurantContext));
-
+  // Se usa el hook useContext para obtener el estado global de la aplicacion.
   const [context, dispatch] = useContext(restaurantContext);
 
+  // Se obtiene la data de los restaurantes traido del context.
   const RESTAURANTS = context.restaurantes;
 
+  // Se crea un array con todos los shows de todos los restaurantes.
   const SHOWS = RESTAURANTS.map((resto) => resto.shows.map((show) => {return show})).flat();
 
   return (
     <View style={styles.normalizer}>
       <View style={styles.container}>
+
         <View style={{marginTop: '5%', marginBottom: '8%'}}>
           <CarrousselImageRestaurant/>
         </View>
+
         <View style={{zIndex: 9999, marginBottom: '12%'}}>
           <InputShow dataProvider={RESTAURANTS}/>
         </View>
+
+        <View>
           <CarrousselImageShow/>
+        </View>
+        
       </View>
     </View>
   );
